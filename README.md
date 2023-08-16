@@ -7,6 +7,7 @@ Set of rules for a computer program to accomplish a Task
 ![image](https://github.com/yashkatiyar2503/dsa/assets/92661124/3c254d51-fe9e-4c78-b168-d4bde574fd11)
 
 **What makes a good algorithm?**
+
 -Correctness
 *Efficiency
 ### Types of Data Structure
