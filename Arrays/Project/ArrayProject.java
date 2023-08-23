@@ -12,7 +12,6 @@ public class ArrayProject {
       temps[i] = Sc.nextInt();
       sum += temps[i];
     }
-
     double average = sum / numDays;
     // count days above average
     int above = 0;
