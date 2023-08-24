@@ -1,0 +1,7 @@
+# Exercises
+## Exercise 1
+### Middle Function
+Write a function called middle that takes an array and returns a new array that contains all but the first and last elements.
+## Exercise 2
+### 2D Arrays
+Given 2D array calculate the sum of diagonal elements.
