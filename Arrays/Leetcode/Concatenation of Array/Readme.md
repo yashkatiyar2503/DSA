@@ -37,10 +37,6 @@
 ## Solution
 
 ```java
-// OJ: https://leetcode.com/problems/concatenation-of-array/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
 class Solution {
     public int[] getConcatenation(int[] nums) {
         int l=nums.length;
