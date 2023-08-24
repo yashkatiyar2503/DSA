@@ -33,7 +33,7 @@ ans = [nums[nums[0]], nums[nums[1]], nums[nums[2]], nums[nums[3]], nums[nums[4]]
 </ul>
 
 
-## Solution 1.
+## Solution
 
 ```java
 // OJ: https://leetcode.com/problems/build-array-from-permutation/
