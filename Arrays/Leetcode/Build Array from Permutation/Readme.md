@@ -36,10 +36,6 @@ ans = [nums[nums[0]], nums[nums[1]], nums[nums[2]], nums[nums[3]], nums[nums[4]]
 ## Solution
 
 ```java
-// OJ: https://leetcode.com/problems/build-array-from-permutation/
-// Author: github.com/lzl124631x
-// Time: O(N)
-// Space: O(1)
 class Solution
 {
     public int[] buildArray(int[] nums) 
