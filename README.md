@@ -9,5 +9,5 @@ Set of rules for a computer program to accomplish a Task
 1. Correctness
 2. Efficiency
 ### Types of Data Structure
-![image](https://github.com/yashkatiyar2503/dsa/assets/92661124/a4851217-d836-4a91-b8e1-6094e11abd7b)
-![image](https://github.com/yashkatiyar2503/dsa/assets/92661124/280b013a-9556-43c0-b6e1-68d477f74d86)
+<p align="center"><img width="60%" src="https://github.com/yashkatiyar2503/dsa/assets/92661124/a4851217-d836-4a91-b8e1-6094e11abd7b" alt="Set of Rules"></p>
+<p align="center"><img width="60%" src="https://github.com/yashkatiyar2503/dsa/assets/92661124/280b013a-9556-43c0-b6e1-68d477f74d86" alt="Set of Rules"></p>
