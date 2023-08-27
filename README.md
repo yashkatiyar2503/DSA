@@ -20,6 +20,12 @@ Set of rules for a computer program to accomplish a Task
   - Divide the problem into smaller subproblems of the same type, and solve these subproblems recursively
   - Combine the solutions to the subproblems into a solution to the original problem
 + Dynamic programming algorithms
+  - They work based on memoization
+  - To find the best solution
 - Greedy algorithms
+  - We take the best we can without worrying about future consequences.
+  - We hope that by choosing a local optimum solution at each step, we will end up at a global optimum solution
 * Brute force algorithms
+  - It simply tries all possibilities until a satisfactory solution is found
 + Randomized algorithms
+  - Use a random number at least once during the computation to make a decision
