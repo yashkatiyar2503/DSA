@@ -17,6 +17,8 @@ Set of rules for a computer program to accomplish a Task
 <p align="center"><img width="50%" src="https://github.com/yashkatiyar2503/DSA/assets/92661124/cb4c7bd4-e525-47e2-8b2b-4ea9248d23d6" alt="Set of Rules"></p>
 
 * Divide and conquer algorithms
+  _Divide the problem into smaller subproblems of the same type, and solve these subproblems recursively
+  _Combine the solutions to the subproblems into a solution to the original problem
 + Dynamic programming algorithms
 - Greedy algorithms
 * Brute force algorithms
