@@ -57,7 +57,7 @@
 * [Count Good Meals (Medium)](https://leetcode.com/problems/count-good-meals/)
 
 
-## Solution 1.
+## Solution
 
 ```java
 class Solution 
