@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <style>
+        #formContainer {
+            display: none;
+            margin-top: 20px;
+        }
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        let currentOperation = '';
+
+        function showForm(operation) {
+            currentOperation = operation;
+            document.getElementById('formContainer').style.display = 'block';
+
+            document.getElementById('employeeId').value = '';
+            document.getElementById('employeeName').value = '';
+            document.getElementById('employeeDepartment').value = '';
+
+            if (operation === 'create') {
+                document.getElementById('employeeId').style.display = 'none';
+                document.getElementById('employeeName').style.display = 'block';
+                document.getElementById('employeeDepartment').style.display = 'block';
+            } else if (operation === 'update' || operation === 'patch' || operation === 'delete') {
+                document.getElementById('employeeId').style.display = 'block';
+                document.getElementById('employeeName').style.display = operation === 'update' || operation === 'patch' ? 'block' : 'none';
+                document.getElementById('employeeDepartment').style.display = operation === 'update' || operation === 'patch' ? 'block' : 'none';
+            }
+        }
+
+        async function submitForm() {
+            const employeeId = document.getElementById('employeeId').value;
+            const employeeName = document.getElementById('employeeName').value;
+            const employeeDepartment = document.getElementById('employeeDepartment').value;
+
+            let response;
+
+            if (currentOperation === 'create') {
+                response = await fetch('/employees', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ employeeName, employeeDepartment })
+                });
+            } else if (currentOperation === 'update') {
+                response = await fetch(`/employees/${employeeId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ employeeName, employeeDepartment })
+                });
+            } else if (currentOperation === 'patch') {
+                const employee = {};
+                if (employeeName) employee.employeeName = employeeName;
+                if (employeeDepartment) employee.employeeDepartment = employeeDepartment;
+                response = await fetch(`/employees/${employeeId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(employee)
+                });
+            } else if (currentOperation === 'delete') {
+                response = await fetch(`/employees/${employeeId}`, {
+                    method: 'DELETE'
+                });
+            }
+
+            alert(response.ok ? `${currentOperation.charAt(0).toUpperCase() + currentOperation.slice(1)} successful!` : `Failed to ${currentOperation}.`);
+            document.getElementById('formContainer').style.display = 'none';
+        }
+
+        async function readEmployees() {
+            const response = await fetch('/employees');
+            const employees = await response.json();
+            const tableBody = document.getElementById('employeeTableBody');
+            tableBody.innerHTML = ''; // Clear previous data
+
+            employees.forEach(emp => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${emp.employeeId}</td>
+                    <td>${emp.employeeName}</td>
+                    <td>${emp.employeeDepartment}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            document.getElementById('employeeTable').style.display = 'table';
+        }
+    </script>
+</head>
+<body>
+    <h1>CRUD Operations</h1>
+    <button type="button" onclick="showForm('create')">Create Employee</button>
+    <button type="button" onclick="readEmployees()">Read Employees</button>
+    <button type="button" onclick="showForm('update')">Update Employee</button>
+    <button type="button" onclick="showForm('patch')">Patch Employee</button>
+    <button type="button" onclick="showForm('delete')">Delete Employee</button>
+
+    <div id="formContainer">
+        <h2 id="formTitle"></h2>
+        <form onsubmit="event.preventDefault(); submitForm();">
+            <input type="text" id="employeeId" placeholder="Employee ID" style="display:none;">
+            <input type="text" id="employeeName" placeholder="Employee Name" style="display:none;">
+            <input type="text" id="employeeDepartment" placeholder="Employee Department" style="display:none;">
+            <button type="submit">Submit</button>
+            <button type="button" onclick="document.getElementById('formContainer').style.display='none'">Cancel</button>
+        </form>
+    </div>
+
+    <table id="employeeTable" style="display:none;">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Employee Department</th>
+            </tr>
+        </thead>
+        <tbody id="employeeTableBody"></tbody>
+    </table>
+</body>
+</html>
